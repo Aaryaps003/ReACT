@@ -1,6 +1,8 @@
-function MovieCard({ movie }) {
+import "./MovieCard.css";
+
+function MovieCard({ movie, onClick }) {
   return (
-    <div className="card">
+    <div className="card" onClick={onClick}>
       <img src={movie.bannerUrl} alt={movie.name} />
 
       <div className="info">
