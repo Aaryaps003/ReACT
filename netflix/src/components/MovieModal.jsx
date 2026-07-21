@@ -1,81 +1,109 @@
-import React from "react";
-import "./MovieModal.css";
-
-const MovieModal = ({ movie, onClose }) => {
-  if (!movie) return null;
+function MovieModal({ movie, onClose }) {
 
   return (
-    <div className="modal-overlay" onClick={onClose}>
+
+    <div className="modal" onClick={onClose}>
+
       <div
         className="modal-content"
         onClick={(e) => e.stopPropagation()}
       >
-        <button className="close-btn" onClick={onClose}>
+
+        <span className="close" onClick={onClose}>
           &times;
-        </button>
+        </span>
 
-        <div className="modal-trailer">
-          {movie.trailerUrl ? (
-            <iframe
-              width="100%"
-              height="400"
-              src={movie.trailerUrl}
-              title={movie.name}
-              frameBorder="0"
-              allowFullScreen
-            ></iframe>
-          ) : (
-            <div className="no-trailer">
-              No Trailer Available
-            </div>
-          )}
-        </div>
+        <img
+          className="banner"
+          src={movie.bannerUrl}
+          alt={movie.name}
+        />
 
-        <div className="modal-metadata">
-          <h2>{movie.name}</h2>
+        <h1>{movie.name}</h1>
 
-          <div className="movie-info">
-            <p>
-              <strong>Release Year:</strong>{" "}
-              {movie.releaseYear}
-            </p>
+        <p>
 
-            <p>
-              <strong>Genre:</strong> {movie.genre}
-            </p>
+          ⭐ {movie.rating}
 
-            <p>
-              <strong>Rating:</strong> {movie.rating}
-            </p>
+          &nbsp;&nbsp;
 
-            <p>
-              <strong>Duration:</strong> {movie.duration}
-            </p>
-          </div>
+          {movie.releaseYear}
 
-          <div className="movie-description">
-            <h3>Overview</h3>
+          &nbsp;&nbsp;
 
-            <p>{movie.description}</p>
-          </div>
+          {movie.duration}
 
-          <div className="movie-cast">
-            <h3>Cast</h3>
+        </p>
 
-            <p>{movie.cast}</p>
-          </div>
+        <br />
 
-          <div className="movie-actions">
-            <button className="play-btn">▶ Play</button>
+        <p>
 
-            <button className="add-btn">
-              + Add to List
-            </button>
-          </div>
-        </div>
+          <strong>Genre:</strong>
+
+          {movie.genre}
+
+        </p>
+
+        <p>
+
+          <strong>Director:</strong>
+
+          {movie.director}
+
+        </p>
+
+        <p>
+
+          <strong>Cast:</strong>
+
+          {movie.cast}
+
+        </p>
+
+        <br />
+
+        <p>{movie.description}</p>
+
+        <br />
+
+        {/* <a
+
+          href={movie.trailer}
+
+          target="_blank"
+
+          rel="noreferrer"
+
+          className="watch"
+
+        >
+
+          ▶ Watch Trailer
+
+        </a> */}
+
+
+
+ <iframe
+      width="100%"
+      height="415"
+      src={movie.trailer}
+      title="YouTube video player"
+      frameBorder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerPolicy="strict-origin-when-cross-origin"
+      allowFullScreen
+    ></iframe>
+
+
+
       </div>
+
     </div>
+
   );
-};
+
+}
 
 export default MovieModal;
